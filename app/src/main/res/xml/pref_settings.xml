@@ -1,0 +1,49 @@
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.preference.SwitchPreferenceCompat
+                    android:key="vibrate"
+                    android:title="@string/vibrate"
+                    android:summary="@string/vibrateSummary"
+                    android:defaultValue="true" />
+
+    <android.support.v7.preference.Preference
+        android:title="@string/softIntro"
+        android:summary="@string/softIntroSummary">
+    <intent android:action="android.intent.action.VIEW"
+        android:data="https://www.yeliheng.com/2fffe5d5.html" />
+    </android.support.v7.preference.Preference>
+
+    <android.support.v7.preference.Preference
+        android:title="@string/site"
+        android:summary="@string/siteSummary"
+        >
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://www.yeliheng.com" />
+    </android.support.v7.preference.Preference>
+
+    <android.support.v7.preference.Preference
+        android:title="@string/source"
+        android:summary="@string/sourceSummary"
+        >
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://github.com/yeliheng/MetalDetector" />
+    </android.support.v7.preference.Preference>
+
+    <android.support.v7.preference.Preference
+        android:title="@string/joinQQGroup"
+        android:summary="@string/joinQQGroupSummary"
+        >
+        <intent android:action="android.intent.action.VIEW"
+            android:data="mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3DV8bvCuNU-wBtQ4-qdA3n69ARWEL9b4fu" />
+    </android.support.v7.preference.Preference>
+
+    <android.support.v7.preference.Preference
+        android:title="@string/ai"
+        android:summary="@string/aiSummary"
+        >
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://www.coolapk.com/apk/com.yeliheng.aiassistant" />
+    </android.support.v7.preference.Preference>
+
+        </android.support.v7.preference.PreferenceScreen>
+
+

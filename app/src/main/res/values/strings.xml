@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MetalDetector-金属探测</string>
+    <string name="vibrate">震动</string>
+    <string name="vibrateSummary">探测到金属时震动提示</string>
+    <string name="softIntro">软件介绍</string>
+    <string name="softIntroSummary">点击会打开网页，有详细介绍</string>
+    <string name="site">技术小站</string>
+    <string name="siteSummary">我会不定期发布资料和干货</string>
+    <string name="source">软件源代码</string>
+    <string name="sourceSummary">能帮到你就给个Star吧</string>
+    <string name="ai">AI助手</string>
+    <string name="aiSummary">我开发的另一个应用,感兴趣就来下载吧</string>
+    <string name="joinQQGroup">加入QQ群</string>
+    <string name="joinQQGroupSummary">如果未能正常唤起请手动加群:783572279</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
