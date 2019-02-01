@@ -1,6 +1,10 @@
 # MetalDetector
 一个基于Android系统的金属探测器
 
+# 查看详细介绍&成品APK下载 #
+
+[Yeliheng的技术小站-MetalDetector](https://www.yeliheng.com/p/2fffe5d5.html)
+
 # 软件介绍 #
 
 Android手机内置磁传感器，可以通过磁传感器计算出磁感应强度，从而在一定程度上实现探测金属。MetalDetector这个软件可以让你的安卓手机变身金属探测器。(仅适用于有一定磁性的金属和支持电子罗盘的安卓手机)
@@ -8,9 +12,5 @@ Android手机内置磁传感器，可以通过磁传感器计算出磁感应强�
 # 食用方法 #
 
 直接将手机靠近金属即可，若识别到金属软件将会震动提示你(可以在设置里关闭震动)，你可以在手机屏幕上看到当前传感器三轴的磁感应强度大小，同时可以看到进度条提示。进度条下方的图表可以更直观地显示出磁感应强度的变化。
-
-# 查看详细介绍&成品APK下载 #
-
-[Yeliheng的技术小站-MetalDetector](https://www.yeliheng.com/p/2fffe5d5.html)
 
 QQ交流群: 783572279
