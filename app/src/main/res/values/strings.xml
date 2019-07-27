@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">MetalDetector-金属探测</string>
     <string name="vibrate">震动</string>
+    <string name="keepWake">保持屏幕常亮</string>
+    <string name="alarmLimit">报警阈值</string>
+    <string name="alarmLimitSummary">自定义磁感应强度为多少时显示探测到金属,金属边框手机可以适当增大</string>
+    <string name="alarmDialog">输入数值(默认80,0为震动棒模式)</string>
     <string name="vibrateSummary">探测到金属时震动提示</string>
+    <string name="keepWakeSummary">探测时屏幕不会关闭</string>
     <string name="softIntro">软件介绍</string>
     <string name="softIntroSummary">点击会打开网页，有详细介绍</string>
     <string name="site">技术小站</string>
@@ -13,5 +18,4 @@
     <string name="joinQQGroup">加入QQ群</string>
     <string name="joinQQGroupSummary">如果未能正常唤起请手动加群:783572279</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

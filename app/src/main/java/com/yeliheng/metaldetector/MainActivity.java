@@ -1,19 +1,26 @@
 package com.yeliheng.metaldetector;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.preference.EditTextPreference;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.white.progressview.CircleProgressView;
 import java.math.BigDecimal;
 import lecho.lib.hellocharts.view.LineChartView;
@@ -35,14 +42,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private LineChartView lineChart;
     private LineCharts lineCharts = new LineCharts();
     private Toolbar toolbar;
+    double alarmLim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initFunc();//初始化所有控件
-        if(new Common().readSP("tip")){
+        if(new Common().readSharedPreferencesByBool("tip")){
             new Common().showSnackBar(getWindow().getDecorView().getRootView());
         }
+
+                if(!new Common().isMagneticSensorAvailable()){
+                    new Common().showDialog(this);
+                }
     }
 
     @Override
@@ -52,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //注册磁场传感器监听器
         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_NORMAL);
+
     }
 
 
@@ -59,10 +72,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         Double rawTotal;//未处理的数据
         if(sensorEvent.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD){
+            //保持屏幕常亮
+            if(new Common().readSharedPreferencesByBool("keep_wake")){
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            }else{
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            }
             //分别计算三轴磁感应强度
             float X_lateral = sensorEvent.values[0];
             float Y_lateral = sensorEvent.values[1];
             float Z_lateral = sensorEvent.values[2];
+            //Log.d(TAG,X_lateral + "");
             //计算出总磁感应强度
             rawTotal = Math.sqrt(X_lateral * X_lateral + Y_lateral * Y_lateral + Z_lateral * Z_lateral);
             //初始化BigDecimal类
@@ -73,11 +93,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             mTextY.setText(Y_lateral + " μT");
             mTextZ.setText(Z_lateral + " μT");
             mTotal.setText( res + " μT");
-
-            if (res < 80){//为了增加敏感度，这里以80微特斯拉作为临界值
+            String alarmLimStr = new Common().readSharedPreferencesByString("alarm_limit");
+            //防止用户非法输入导致软件崩溃影响体验
+            if(!alarmLimStr.isEmpty()){
+                alarmLim = Double.valueOf(alarmLimStr);
+            }else {
+                alarmLim = 80;
+            }
+            if (res < alarmLim){
                 metalState.setTextColor(Color.rgb(0,0,0));//设置文字颜色为黑色
                 metalState.setText("未探测到金属");
-                int progress = (int)((res / 80 )* 100);//计算进度
+                int progress = (int)((res / alarmLim )* 100);//计算进度
                 progressView.setReachBarColor(Color.rgb(30,144,255));
                 progressView.setProgress(progress);//进度条
             }else{
