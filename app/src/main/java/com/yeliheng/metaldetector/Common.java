@@ -3,14 +3,12 @@ package com.yeliheng.metaldetector;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.Vibrator;
-import android.support.design.widget.Snackbar;
-import android.support.v7.preference.PreferenceManager;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.preference.PreferenceManager;
 import android.view.View;
 
 import static android.content.Context.MODE_PRIVATE;
